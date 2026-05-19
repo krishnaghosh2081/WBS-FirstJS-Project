@@ -7,46 +7,47 @@ if (args.length !== 1) {
 }
 
 const textArray = [
-    'Rock',
-    'Paper',
-    'Scissors'
+    'rock',
+    'paper',
+    'scissors'
 ];
 
-let yourVal=args[0];
+let yourVal=args[0].toLowerCase();
 //console.log('Your input:',yourVal);
-if(textArray.some((val) => val===yourVal)){
-    console.log('Your input:',yourVal);
-}else{
-    console.log('Not a valid input.',yourVal);
+if(!textArray.includes(yourVal)){
+    console.log('Not a valid input.',capitalize(yourVal));
     return;
 }
-
+function capitalize(s)
+{
+    return String(s[0]).toUpperCase() + String(s).slice(1);
+}
 let genVal = Math.floor(Math.random()*textArray.length);
 
-console.log('Value generates:',textArray[genVal]);
+//console.log('Value generates:',textArray[genVal]);
 
 let randomVal=textArray[genVal];
 
 if(yourVal===randomVal){
-    console.log("It is a tie");
+    console.log(`Game results: You chose ${capitalize(yourVal)}. Computer chose ${capitalize(randomVal)}.`,"It is a tie");
 } else{
-    console.log("Game results: ",playGame(yourVal,randomVal));
+    console.log(`Game results: You chose ${capitalize(yourVal)}. Computer chose ${capitalize(randomVal)}.`,playGame(yourVal,randomVal)?'You win!':'You lose!');
 }
 
 function playGame(yourVal,randomVal){
     switch(yourVal + "|" + randomVal) {
-        case "Rock|Paper":
-            return 'You lose';
-        case "Paper|Rock":
-            return 'You win';    
-        case "Paper|Scissors":
-            return 'You lose';
-        case "Scissors|Paper":
-            return 'You win';    
-        case "Scissors|Rock":
-            return 'You lose';
-        case "Rock|Scissors":
-            return 'You win';    
+        case "rock|paper":
+            return 0;
+        case "paper|rock":
+            return 1;    
+        case "paper|scissors":
+            return 0;
+        case "scissors|paper":
+            return 1;    
+        case "scissors|rock":
+            return 0;
+        case "rock|scissors":
+            return 1;    
         default :
             return 'Not a valid input.'    
     }
