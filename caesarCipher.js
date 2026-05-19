@@ -17,6 +17,10 @@ const isUpperCase = str => str === str.toUpperCase();
 let returnVal='';
 
 for(const val of givenString){
+    if(!isNaN(val)){
+        console.error('Please provide your 1st input as a String!');
+        return;
+    }
     let valUC=isUpperCase(val);
    // console.log(valUC);
     let num=parseInt(val.charCodeAt());
