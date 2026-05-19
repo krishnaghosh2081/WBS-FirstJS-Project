@@ -11,13 +11,13 @@ const finalValue=[];
 for(const arg of args){
     let val=arg.split(' ');
     //console.log('each input:',val);
-    //let i=1;
+    
     const changedVal=[];
     for(const valueTochange of val){
         //console.log('each input to change:',valueTochange);
         let valChanged=checkAndChange(valueTochange);
         changedVal.push(valChanged);
-        //i++;
+        
     }
     //console.log("changedVal:",changedVal);
     let createFinalVal='';
