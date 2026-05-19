@@ -44,24 +44,24 @@ function checkAndChange(value){
         //If a word starts with a vowel add the word "way" at the end of the word.
         // Example: Awesome = Awesome +way = Awesomeway
         return value+'way';
-    }else if(value.length>=3){
-        
-        let firstChar1=value.substring(0, 1);
+    }else if(value.length>1){
         let secondChar=value.substring(1, 2);
-        let lastAllchar=value.substring(2,value.length);
-        if(!isVowel(firstChar1) && !isVowel(secondChar)){
+        let lastAllchar='';
+        if(value.length>2){
+            lastAllchar=value.substring(2,value.length);
+        }
+        
+        if(!isVowel(secondChar)){
             //If a word starts with two consonants move the two consonants to the end of the word and add "ay."
             //Example: Child = Ildch + ay = Ildchay
-            return lastAllchar+firstChar1+secondChar+'ay';
-        }else if(!isVowel(firstChar1) && isVowel(secondChar)){
+            return lastAllchar+firstChar+secondChar+'ay';
+        }else {
             //If a word starts with a consonant and a vowel, put the first letter of the word at the end of the word and add "ay."
             //Example: Happy = appyh + ay = appyhay
-            return secondChar+lastAllchar+firstChar1+'ay';
+            return secondChar+lastAllchar+firstChar+'ay';
         }
-
-        return value;
     }else{
-        return value;
+        return value+'ay';//when a single consonant char passed return with ay only
     }
 }
 
